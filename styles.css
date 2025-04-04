@@ -2,11 +2,17 @@
 
 :root {
     --eco: #2ecc71;
-    --eco-dark: #27ae60;
+    --ecoDark: #27ae60;
     --foreground: #333;
-    --destructive: #dc3545;
     --fontfamily: "Poppins", sans-serif;
+    --white : white;
    
+}
+
+
+*{
+    list-style: none; 
+    text-decoration: none;
 }
 
 body {
@@ -15,11 +21,11 @@ body {
     font-family: var(--fontfamily);
     list-style: none; 
     text-decoration: none;
-        background-color: white;
+        background-color: var(--white);
         margin: 0;
         height: 100vh;
         animation: appear 4s ease-in-out 1;
-        overflow: hidden;
+        overflow: auto;
     animation: revealContent 0.1s 2s forwards;
     animation: appear 2s ease-in-out 1;
 
@@ -119,7 +125,7 @@ body {
 }
 
 .nav-link:hover {
-    color:white;
+    color:var(--white);
     text-decoration: underline;
 }
 
@@ -154,8 +160,8 @@ body {
     position: absolute;
     right: 1rem;
     top: 4rem;
-    background: white;
-    border: 1px solid #e0e0e0;
+    background: var(--white);
+    border: 1px solid var(--white);
     border-radius: 0.5rem;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     min-width: 200px;
@@ -163,10 +169,10 @@ body {
 }
 
 .tab-trigger {
-background-color: #e7e7e7e7;
+background-color: white;
 border-radius: 8px;
 padding: 0.5rem 1rem;
-border: 1px solid #e0e0e0;
+border: 1px solid white;
 cursor: pointer;
 transition: background 0.2s;
 }
@@ -205,22 +211,22 @@ transition: background 0.2s;
 
 .btn-eco {
     background: var(--eco);
-    color: white;
+    color: var(--white);
     border: none;
 }
 
 .btn-eco:hover {
-    background: var(--eco-dark);
+    background: var(--ecoDark);
 }
 
 .btn-outline {
     background: none;
-    border: 1px solid #e0e0e0;
+    border: 1px solid white;
     color: var(--foreground);
 }
 
 .btn {
-    background-color: #e7e7e7;
+    background-color: white;
     border: solid black 2px;
 }
 
@@ -299,7 +305,7 @@ transition: background 0.2s;
 
 .tagline h1 {
     font-size: 2.5rem;
-    color: var(--eco-dark);
+    color: var(--ecoDark);
     margin-bottom: 1rem;
    
 }
@@ -331,12 +337,14 @@ transition: background 0.2s;
     100% { background-color: black;opacity: 1; }
 }
 
-
 /* footer desing */
 footer{
-    background-color: #6C513C;
+    background-color: #333333;
     padding-top: 0px;
-    padding-bottom: 15px;
+    padding-bottom: 5px;
+    border-top-left-radius: 10px; 
+    border-top-right-radius: 10px; 
+    color: #FFFFFF;
 }
 
 /* Footer Section */
@@ -344,8 +352,8 @@ footer{
 .footerStart{
     display: flex;
     justify-content: space-between;
-    padding-right: 20px;
-    padding-left: 20px;
+    padding-right: 15px;
+    padding-left: 15px;
     color: var(--fontcolor);
 }
 
@@ -353,28 +361,25 @@ footer{
     font-size: 30px;
     margin-left: 10px;
     letter-spacing: 4px;
-
+    color: white;
 }
 
 
 img{
     margin: 0;
-    padding: 5px;
-    height: 5vh;
+    padding-right: 5px;
+    height: 4vh;
     width: auto;
 }
 
 .footerimg{
-    padding-right: 80px;
+    padding-right: 30px;
     display: flex;
     justify-content:flex-end;
 
 }
 
-
-
  /* Second footer */
-
 .footerSecond {
     display: flex;
     justify-content: space-evenly;
@@ -392,16 +397,15 @@ img{
 
 .footerLink h1 {
    padding-left: 35px;
-    font-size: 18px;
-    text-decoration: underline;
+    font-size: 15px;
     line-height: 3px;
 }
 
 .footerLink ul a {
     color: var(--fontcolor);
     display: flex;
-    padding-top: 20px; 
-    font-size: 14px;
+    padding-top: 15px; 
+    font-size: 12px;
     
 }
 
@@ -420,16 +424,15 @@ img{
 
 .footerService h1 {
    padding-left: 32px;
-    font-size: 18px;
-    text-decoration: underline;
+    font-size: 15px;
     line-height: 3px;
 }
 
 .footerService ul a {
     color: var(--fontcolor);
    display: flex;
-    padding-top: 20px;  
-    font-size: 14px;
+    padding-top: 15px;  
+    font-size: 12px;
     
 }
 
@@ -448,16 +451,15 @@ img{
 
 .footerOtherServices h1 {
    padding-left: 32px;
-    font-size: 18px;
-    text-decoration: underline;
+    font-size: 15px;
     line-height: 3px;
 }
 
 .footerOtherServices ul a {
     color: var(--fontcolor);
    display: flex;
-    padding-top: 20px;  
-    font-size: 14px;
+    padding-top: 15px;  
+    font-size: 12px;
     
 }
 
@@ -477,8 +479,7 @@ img{
 
 .footerContact h1 {
    padding-left: 32px;
-   font-size: 20px;
-   text-decoration: underline;
+   font-size: 15px;
    line-height: 3px;
 }
 
@@ -486,7 +487,7 @@ img{
 .footerContact ul li {
     color: var(--fontcolor);
    padding-right: 20px;
-    padding-top: 20px;
+    padding-top: 15px;
     font-size: 14px;
 }
 
@@ -508,7 +509,8 @@ img{
     }
     
     .footerStart h1 {
-        margin: 15px 0;
+       margin-top: 10px;
+       margin-bottom: 5px;
     }
     
     .footerStart ul {

@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EcoSwap</title>
 <link rel="stylesheet" href="styles.css">
-
 </head>
 <body>
     <header class="header">
@@ -61,10 +60,18 @@
     </section>
 
     <footer>
-        
         <span class="footerStart">
             <h1>EcoSwap</h1>
           
+                <span class="footerimg">
+                    <ul>
+                        <li>
+                            <a href="https://www.facebook.com/login.php/"><img src="facebook.png" class="images" alt="img"></a>
+                            <a href="https://www.instagram.com/"><img src="instagram.png" class="images" alt="img"></a>
+                            <a href="https://x.com/i/flow/login"><img src="twitter.png" class="images" alt="img"></a>
+                        </li>
+                    </ul>
+                 </span>
         </span>
 
         <div class="footerSecond">
@@ -102,6 +109,7 @@
                 </li>
             </ul>
         </div>
+
         <div class="footerContact">
             <h1>Contact</h1>
             <ul>
@@ -120,39 +128,10 @@
             </ul>
         </div>
        
-    </div>
-    <span class="footerimg">
-        <ul>
-            <li>
-                <a href="https://www.facebook.com/login.php/"><img src="facebook.png" class="images" alt="img"></a>
-                <a href="https://www.instagram.com/"><img src="instagram.png" class="images" alt="img"></a>
-                <a href="https://x.com/i/flow/login"><img src="twitter.png" class="images" alt="img"></a>
-            </li>
-        </ul>
-     </span>
+     </div>
     </footer>
 
-    <script>
-
-document.addEventListener("DOMContentLoaded", function(){
-                setTimeout(() => {
-                     document.querySelector(".logo-c").style.animation = "moveLogo 3s ease-in-out forwards";
-                
-                
-                }, 3000);
-            
-            });
-
-        function switchTab(tabName) {
-            // Tab switching logic would go here
-            console.log('Switching to tab:', tabName);
-        }
-
-    </script>
-
-
-
-    
+    <script src="script.js"></script>
 </body>
 </head>
 </html>
