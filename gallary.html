@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(to right, #70874c, #f0f0f0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+        }
+        .nav-button {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 192, 203, 0.2);
+            border: 2px solid rgba(255, 192, 203, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 0 15px rgba(255, 192, 203, 0.3);
+        }
+
+        .nav-button:hover {
+            background: rgba(255, 192, 203, 0.4);
+            box-shadow: 
+                0 0 20px rgba(255, 192, 203, 0.5),
+                0 0 40px rgba(255, 192, 203, 0.3);
+        }
+
+        .nav-button.prev {
+            left: 30px;
+        }
+
+        .nav-button.next {
+            right: 30px;
+        }
+
+        .nav-button::before {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-top: 3px solid white;
+            border-right: 3px solid white;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button.prev::before {
+            transform: rotate(-135deg);
+            margin-left: 5px;
+        }
+
+        .nav-button.next::before {
+            transform: rotate(45deg);
+            margin-right: 5px;
+        }
+
+        .nav-button:active {
+            transform: translateY(-50%) scale(0.95);
+        }
+
+        .nav-button.active {
+            background: rgba(255, 192, 203, 0.6);
+            box-shadow: 
+                0 0 30px rgba(255, 192, 203, 0.7),
+                0 0 50px rgba(255, 192, 203, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .nav-button {
+                width: 40px;
+                height: 40px;
+            }
+            .nav-button::before {
+                width: 12px;
+                height: 12px;
+            }
+        }
+
+
+        .spotlight {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            width: 400px;
+            height: 400px;
+            transform: translateX(-50%);
+            background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 2;
+            animation: spotlightPulse 4s infinite;
+        }
+
+        @keyframes spotlightPulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.8; }
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+       
+        }
+
+      
+
+        .gallery-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 2000px;
+        }
+
+        .gallery {
+            position: relative;
+            width: 300px;
+            height: 400px;
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease-out;
+        }
+
+        .card {
+            position: absolute;
+            width: 300px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+            border: 2px solid rgba(255, 192, 203, 0.3);
+            transition: all 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+            cursor: pointer;
+            overflow: hidden;
+            transform-origin: center center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            opacity: 0.9; /* Increased default opacity */
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 50%);
+            z-index: 2;
+            transition: opacity 0.3s;
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            right: -100%;
+            bottom: -100%;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.8) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+
+        .card.active {
+            transform: scale(1.1) translateZ(100px); /* Reduced scale and Z-index */
+            box-shadow: 0 20px 60px rgba(255, 192, 203, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            opacity: 1;
+            z-index: 10;
+        }
+
+        .card.active::after {
+            opacity: 0.1;
+        }
+
+        @media (max-width: 768px) {
+            .gallery, .card {
+                width: 240px;
+                height: 320px;
+            }
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.05); /* Reduced initial scale */
+            transition: transform 0.5s;
+        }
+
+        .card:hover img {
+            transform: scale(1.1); /* Reduced hover scale */
+        }
+
+        .number {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(255, 192, 203, 0.7);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 14px;
+            z-index: 3;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        .ambient-light {
+            position: fixed;
+            pointer-events: none;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(
+                circle at 50% 0%,
+                rgba(255,255,255,0.1) 0%,
+                transparent 50%
+            );
+            z-index: 1;
+        }
+        
+        /* Swap button styles */
+        .swap-btn {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            border: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            opacity: 0.8; /* Increased default opacity */
+            transform: scale(0.9); /* Slightly larger default size */
+        }
+        
+        .card:hover .swap-btn, .card.active .swap-btn {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .swap-btn:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: scale(1.1) !important;
+        }
+        
+        .swap-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: #1a1a4a;
+        }
+        
+        .swap-btn-top-left {
+            top: 10px;
+            left: 10px;
+        }
+        
+        .swap-btn-top-right {
+            top: 10px;
+            right: 10px;
+        }
+        
+        .swap-btn-bottom-left {
+            bottom: 10px;
+            left: 10px;
+        }
+        
+        .swap-btn-bottom-right {
+            bottom: 10px;
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="ambient-light"></div>
+    <div class="spotlight"></div>
+    <div class="stars"></div>
+    <button class="nav-button prev" aria-label="Previous"></button>
+    <button class="nav-button next" aria-label="Next"></button>
+    <div class="gallery-container">
+        <div class="gallery"></div>
+    </div>
+
+    <script>
+        function createStars() {
+            const starsContainer = document.querySelector('.stars');
+            for (let i = 0; i < 200; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = Math.random() * 3 + 'px';
+                star.style.height = star.style.width;
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 2 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        function createGallery() {
+            const gallery = document.querySelector('.gallery');
+            const totalCards = 9;
+            const radius = window.innerWidth < 768 ? 400 : 600;
+            let currentAngle = 0;
+            let isDragging = false;
+            let startX = 0;
+            let currentX = 0;
+            let autoRotateInterval;
+            
+            const prevButton = document.querySelector('.nav-button.prev');
+            const nextButton = document.querySelector('.nav-button.next');
+            
+            // Array of image URLs
+            const imageUrls = [
+                '1.jpeg',
+                '2.jpeg',
+                '3.jpeg',
+                '4.jpeg',
+                '5.jpeg',
+                '6.jpeg',
+                '7.jpeg',
+                '8.jpeg',
+                '9.jpeg',
+            ];
+            
+            // Array of target URLs for the swap buttons
+            const targetUrls = [
+                'page1.html',
+                'page2.html',
+                'page3.html',
+                'page4.html',
+                'page5.html',
+                'page6.html',
+                'page7.html',
+                'page8.html',
+                'page9.html',
+            ];
+            
+            // Create cards
+            for (let i = 0; i < totalCards; i++) {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <img src="${imageUrls[i]}" alt="Romantic photo ${i + 1}">
+                    <div class="number">${i + 1}</div>
+                `;
+                
+                // Create swap buttons for each corner
+                const positions = ['top-left', 'top-right', 'bottom-left', 'bottom-right'];
+                positions.forEach(pos => {
+                    const swapBtn = document.createElement('button');
+                    swapBtn.className = `swap-btn swap-btn-${pos}`;
+                    swapBtn.innerHTML = `
+                        <svg viewBox="0 0 24 24">
+                            <path d="M21 3H3v18h18V3zm-2 16H5V5h14v14zm-4-4v-2h2v2h-2zm-4 0v-2h2v2h-2zm-4 0v-2h2v2H7zm8-4v-2h2v2h-2zm-4 0v-2h2v2h-2zm-4 0v-2h2v2H7z"/>
+                        </svg>
+                    `;
+                    swapBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        // Redirect to the corresponding page
+                        window.location.href = targetUrls[i];
+                    });
+                    card.appendChild(swapBtn);
+                });
+                
+                gallery.appendChild(card);
+            }
+
+            function rotateGallery(direction) {
+                clearInterval(autoRotateInterval);
+                currentAngle += direction * (360 / totalCards);
+                updateCards();
+            }
+
+            // Navigation button click handlers
+            prevButton.addEventListener('click', () => rotateGallery(1));
+            nextButton.addEventListener('click', () => rotateGallery(-1));
+
+            function updateCards(extraRotation = 0) {
+                const cards = document.querySelectorAll('.card');
+                let activeCardFound = false;
+                
+                cards.forEach((card, index) => {
+                    const angle = (currentAngle + extraRotation + (index * (360 / totalCards))) * (Math.PI / 180);
+                    const x = Math.sin(angle) * radius;
+                    const z = Math.cos(angle) * radius;
+                    const rotateY = angle * (180 / Math.PI);
+                    
+                    card.style.transform = `translate3d(${x}px, 0, ${z}px) rotateY(${rotateY}deg)`;
+                    
+                    const normalizedAngle = ((currentAngle + extraRotation + (index * (360 / totalCards))) % 360 + 360) % 360;
+                    
+                    // Calculate opacity based on angle (more gradual transition)
+                    let opacity = 0.9;
+                    if (normalizedAngle < 30 || normalizedAngle > 330) {
+                        opacity = 1;
+                    } else if (normalizedAngle > 150 && normalizedAngle < 210) {
+                        opacity = 0.8;
+                    }
+                    
+                    card.style.opacity = opacity;
+                    
+                    // Only one card should be active (the one facing front)
+                    if (!activeCardFound && (normalizedAngle > 350 || normalizedAngle < 10)) {
+                        card.classList.add('active');
+                        activeCardFound = true;
+                    } else {
+                        card.classList.remove('active');
+                    }
+                });
+            }
+
+            // Mouse and touch event handlers
+            gallery.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                startX = e.clientX;
+                currentX = currentAngle;
+                gallery.style.cursor = 'grabbing';
+                clearInterval(autoRotateInterval);
+            });
+
+            window.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                const diff = (e.clientX - startX) * 0.5;
+                currentAngle = currentX + diff;
+                updateCards();
+
+                const dragDirection = e.movementX;
+                prevButton.classList.toggle('active', dragDirection < 0);
+                nextButton.classList.toggle('active', dragDirection > 0);
+            });
+
+            window.addEventListener('mouseup', () => {
+                isDragging = false;
+                gallery.style.cursor = 'grab';
+                prevButton.classList.remove('active');
+                nextButton.classList.remove('active');
+            });
+
+            // Touch events
+            gallery.addEventListener('touchstart', (e) => {
+                isDragging = true;
+                startX = e.touches[0].clientX;
+                currentX = currentAngle;
+                clearInterval(autoRotateInterval);
+                e.preventDefault();
+            });
+
+            window.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                const diff = (e.touches[0].clientX - startX) * 0.5;
+                currentAngle = currentX + diff;
+                updateCards();
+                
+                const touchDirection = e.touches[0].clientX - startX;
+                prevButton.classList.toggle('active', touchDirection < 0);
+                nextButton.classList.toggle('active', touchDirection > 0);
+                
+                e.preventDefault();
+            }, { passive: false });
+
+            window.addEventListener('touchend', () => {
+                isDragging = false;
+                prevButton.classList.remove('active');
+                nextButton.classList.remove('active');
+            });
+
+            // Mouse wheel handler
+            window.addEventListener('wheel', (e) => {
+                clearInterval(autoRotateInterval);
+                const delta = e.deltaX * 0.1 || e.deltaY * 0.1;
+                currentAngle += delta;
+                updateCards();
+                
+                prevButton.classList.toggle('active', delta > 0);
+                nextButton.classList.toggle('active', delta < 0);
+            });
+
+            // Initial update
+            updateCards();
+        }
+
+        // Initialize
+        createStars();
+        createGallery();
+    </script>
+</body>
+</html>

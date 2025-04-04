@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoSwap</title>
+<link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <header class="header">
+        <div class="nav-container">       
+
+                <span class="ecoswap">EcoSwap</span>
+
+            <nav class="desktop-nav">
+                <a href="/browse" class="nav-link">Browse</a>
+                <a href="/categories" class="nav-link">Categories</a>
+                <a href="/how-it-works" class="nav-link">How It Works</a>
+                <a href="/about" class="nav-link">About</a>
+            </nav>
+
+            <div class="tabs-header">
+
+                <button class="tab-trigger active" onclick="switchTab('login')">Login</button>
+
+                <button class="tab-trigger" onclick="switchTab('register')">Register</button>
+
+            </div>
+
+            <div class="logo-c">
+
+                <img src="logo.jpg" alt="logo" class="logo">
+
+            </div>
+
+      </header>
+
+            <!-- New section with tagline and image -->
+    <section class="mainSection">
+
+        <div class="tagline">
+            <h1>EcoSwap - Renew, Reuse, Reimagine</h1>
+
+            <p>Join our community dedicated to sustainable living by swapping items you no longer need for things that will bring you joy.</p>
+
+            <button type="button" class="custom-button" onclick="document.getElementById('browse-container').scrollIntoView({ behavior: 'smooth' });">
+                Browse Items
+            </button>
+
+                <a href="list_your_item.html"><button class="custom-button">List Your Items</button></a>
+                <a href="gallary.html"><button class="custom-button">Upcycle</button></a>
+
+        </div>
+    
+        <div class="eco-image">
+            <!-- Replace with your actual image path -->
+            <img src="recycle.jpg" class="images" alt="Eco-friendly items for swapping">
+        </div>
+
+    </section>
+
+    <footer>
+        
+        <span class="footerStart">
+            <h1>EcoSwap</h1>
+          
+        </span>
+
+        <div class="footerSecond">
+
+        <div class="footerLink">
+            <h1>Company</h1>
+            <ul>
+                <li>
+                    <a href="index.html">Home</a>
+                    <a href="index.html">About Us</a>
+                    <a href="index.html">Contact</a>
+                    <a href="index.html">Careers</a>
+                </li>
+            </ul>
+        </div>
+        <div class="footerService">
+            <h1>Plaform</h1>
+            <ul>
+                <li>
+                    <a href="index.html">Browse</a>
+                    <a href="index.html">Community</a>
+                    <a href="index.html">Categories</a>
+                    <a href="index.html">How it works</a>
+                </li>
+            </ul>
+        </div>
+        <div class="footerOtherServices">
+            <h1>Support</h1>
+            <ul>
+                <li>
+                    <a href="index.html">Help Center</a>
+                    <a href="index.html">Terms of sevices</a>
+                    <a href="index.html">Primary</a>
+                    <a href="index.html">FAQ</a>
+                </li>
+            </ul>
+        </div>
+        <div class="footerContact">
+            <h1>Contact</h1>
+            <ul>
+                <li>
+                    +9115561xxxx
+                </li>
+                <li>
+                    +9115561xxxx
+                </li>
+                <li>
+                    xyz@gmail.com
+                </li>
+                <li>
+                    1234, 1st Floor, ABC Road, XYZ City
+                </li>
+            </ul>
+        </div>
+       
+    </div>
+    <span class="footerimg">
+        <ul>
+            <li>
+                <a href="https://www.facebook.com/login.php/"><img src="facebook.png" class="images" alt="img"></a>
+                <a href="https://www.instagram.com/"><img src="instagram.png" class="images" alt="img"></a>
+                <a href="https://x.com/i/flow/login"><img src="twitter.png" class="images" alt="img"></a>
+            </li>
+        </ul>
+     </span>
+    </footer>
+
+    <script>
+
+document.addEventListener("DOMContentLoaded", function(){
+                setTimeout(() => {
+                     document.querySelector(".logo-c").style.animation = "moveLogo 3s ease-in-out forwards";
+                
+                
+                }, 3000);
+            
+            });
+
+        function switchTab(tabName) {
+            // Tab switching logic would go here
+            console.log('Switching to tab:', tabName);
+        }
+
+    </script>
+
+
+
+    
+</body>
+</head>
+</html>

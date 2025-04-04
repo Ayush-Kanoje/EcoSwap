@@ -1,0 +1,228 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: var(--font);
+}
+
+:root{
+    --fontcolor : white;
+    --font : 'Poppins', sans-serif, Arial, Helvetica;
+}
+
+* {
+   list-style: none; 
+   text-decoration: none;
+}
+
+footer{
+    background-color: #6C513C;
+    padding-top: 0px;
+    padding-bottom: 15px;
+}
+
+/* Footer Section */
+
+.footerStart{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 20px;
+    padding-left: 20px;
+    color: var(--fontcolor);
+}
+
+.footerStart h1{
+    font-size: 30px;
+    margin-left: 10px;
+    letter-spacing: 4px;
+
+}
+
+
+img{
+    margin: 0;
+    padding: 5px;
+    height: 5vh;
+    width: auto;
+}
+
+.footerimg{
+    padding-right: 80px;
+    display: flex;
+    justify-content:flex-end;
+
+}
+
+
+
+ /* Second footer */
+
+.footerSecond {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: var(--fontcolor);
+}
+
+/* Links Section */
+
+.footerLink {
+    display: inline-block;
+    color: var(--fontcolor);
+
+}
+
+.footerLink h1 {
+   padding-left: 35px;
+    font-size: 18px;
+    text-decoration: underline;
+    line-height: 3px;
+}
+
+.footerLink ul a {
+    color: var(--fontcolor);
+    display: flex;
+    padding-top: 20px; 
+    font-size: 14px;
+    
+}
+
+.footerLink a:visited{
+    color: var(--fontcolor);
+    
+}
+
+/* services section */
+
+.footerService {
+    color: var(--fontcolor);
+    display: inline-block;
+
+}
+
+.footerService h1 {
+   padding-left: 32px;
+    font-size: 18px;
+    text-decoration: underline;
+    line-height: 3px;
+}
+
+.footerService ul a {
+    color: var(--fontcolor);
+   display: flex;
+    padding-top: 20px;  
+    font-size: 14px;
+    
+}
+
+.footerService a:visited{
+    color: var(--fontcolor);
+    
+}
+
+/* Other Services Section */
+
+.footerOtherServices {
+    color: var(--fontcolor);
+    display: inline-block;
+
+}
+
+.footerOtherServices h1 {
+   padding-left: 32px;
+    font-size: 18px;
+    text-decoration: underline;
+    line-height: 3px;
+}
+
+.footerOtherServices ul a {
+    color: var(--fontcolor);
+   display: flex;
+    padding-top: 20px;  
+    font-size: 14px;
+    
+}
+
+.footerOtherServices a:visited{
+    color: var(--fontcolor);
+    
+}
+
+/* Contact */
+
+.footerContact {
+    color: var(--fontcolor);
+    margin-right: 50px;
+    display: inline-block;
+
+}
+
+.footerContact h1 {
+   padding-left: 32px;
+   font-size: 20px;
+   text-decoration: underline;
+   line-height: 3px;
+}
+
+
+.footerContact ul li {
+    color: var(--fontcolor);
+   padding-right: 20px;
+    padding-top: 20px;
+    font-size: 14px;
+}
+
+.footerContact a:visited{
+    color: var(--fontcolor);
+    
+}
+
+/* Contact section specific */
+.footerContact {
+    margin-right: 0;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+    .footerStart {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footerStart h1 {
+        margin: 15px 0;
+    }
+    
+    .footerStart ul {
+        justify-content: center;
+    }
+    
+    .footerSecond {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .footerLink,
+    .footerService,
+    .footerOtherServices,
+    .footerContact {
+        text-align: center;
+    }
+    
+    .footerLink h1,
+    .footerService h1,
+    .footerOtherServices h1,
+    .footerContact h1 {
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footerStart h1 {
+        font-size: 24px;
+    }
+    
+    .footerStart ul img {
+        height: 20px;
+        width: 20px;
+    }
+}
