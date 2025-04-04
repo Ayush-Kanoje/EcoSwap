@@ -8,6 +8,12 @@
 </head>
 <body>
     <header class="header">
+        <div class="logo-c">
+
+            <img src="assets/logo.jpg" alt="logo" class="logo">
+
+        </div>
+        
         <div class="nav-container">       
 
                 <span class="ecoswap">EcoSwap</span>
@@ -26,13 +32,6 @@
                 <button class="tab-trigger" onclick="switchTab('register')">Register</button>
 
             </div>
-
-            <div class="logo-c">
-
-                <img src="logo.jpg" alt="logo" class="logo">
-
-            </div>
-
       </header>
 
             <!-- New section with tagline and image -->
@@ -43,7 +42,7 @@
 
             <p>Join our community dedicated to sustainable living by swapping items you no longer need for things that will bring you joy.</p>
 
-            <button type="button" class="custom-button" onclick="document.getElementById('browse-container').scrollIntoView({ behavior: 'smooth' });">
+            <button type="button" class="custom-button" onclick="document.getElementById('itemContainer').scrollIntoView({ behavior: 'smooth' });">
                 Browse Items
             </button>
 
@@ -54,11 +53,32 @@
     
         <div class="eco-image">
             <!-- Replace with your actual image path -->
-            <img src="recycle.jpg" class="images" alt="Eco-friendly items for swapping">
+            <img src="assets/recycle.jpg" class="images" alt="Eco-friendly items for swapping">
         </div>
 
     </section>
+    <div class="itemContainer">
+        <h1>Browse Categories</h1>
+        <p>Find exactly what you're looking for from our diverse selection of categories.</p>
+        <div class="grid">
+           <div class="box"> <a href="browseClothing.html">Clothing <br><span class="items">156 items</span></a></div>
 
+            <div class="box"><a href="browseEctronics.html">Electronics <br><span class="items">99 items</span></a></a></div>
+
+            <div class="box"><a href="#">Books<br><span class="items">241 items</span></a></div>
+
+            <div class="box"><a href="#">Home<br><span class="items">241 items</span></a></div>
+
+            <div class="box"><a href="#">Sport<br><span class="items">241 items</span></a></div>
+
+            <div class="box"><a href="#">Garden<br><span class="items">241 items</span></a></div>
+
+            <div class="box"><a href="#">Toys<br><span class="items">241 items</span></a></div>
+
+            <div class="box"><a href="#">Art & Craft<br><span class="items">241 items</span></a></div>
+
+        </div>
+    </div>
     <footer>
         <span class="footerStart">
             <h1>EcoSwap</h1>

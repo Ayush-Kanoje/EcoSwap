@@ -10,4 +10,5 @@ document.addEventListener("DOMContentLoaded", function(){
 function switchTab(tabName) {
 // Tab switching logic would go here
 console.log('Switching to tab:', tabName);
+
 }
