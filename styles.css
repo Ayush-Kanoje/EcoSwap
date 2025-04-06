@@ -277,12 +277,8 @@ body {
   transform: translate(-50%, -50%);
   opacity: 0;
   animation: logoAppear 4s ease-in-out forwards,
-  logoPulse 1s ease-in-out 2s 3 forwards,
-             moveLogo 3s ease-in-out forwards;
-            
-    
+    logoPulse 1s ease-in-out 2s 3 forwards, moveLogo 3s ease-in-out forwards;
 }
-
 
 @keyframes logoAppear {
   0% {
@@ -298,7 +294,6 @@ body {
     transform: translate(-50%, -50%) scale(1);
   }
 }
-
 
 @keyframes moveLogo {
   0% {
@@ -316,11 +311,17 @@ body {
   }
 }
 
-  @keyframes logoPulse {
-    0% { transform: translate(-50%, -50%) scale(1); }
-    50% { transform: translate(-50%, -50%) scale(1.2); }
-    100% { transform: translate(-50%, -50%) scale(1); }
+@keyframes logoPulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
   }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
 
 .eco-image {
   position: relative;
@@ -390,13 +391,11 @@ body {
   line-height: 1.6;
 }
 
-
-
 /* CSS */
 .custom-button {
   position: relative;
   padding: 10px 20px;
-  padding-left: 50px;  /* space for the left icon */
+  padding-left: 50px; /* space for the left icon */
   padding-right: 50px; /* space for the right icon */
   margin-top: 25px;
   font-family: var(--fontfamily);
@@ -407,9 +406,7 @@ body {
   font-size: 16px;
   border-radius: 10px;
   transition: 0.3s;
-  
 }
-
 
 /* Right Icon */
 .custom-button:after {
@@ -419,28 +416,24 @@ body {
   top: 50%;
   width: 24px;
   height: 24px;
-
 }
 
 #browseItem:hover:after {
-  background: url('assets/shopping-bags.png') no-repeat center center;
+  background: url("assets/shopping-bags.png") no-repeat center center;
   background-size: contain;
   transform: translateY(-50%) scale(1.2);
-
 }
 
 #listItem:hover:after {
-  background: url('assets/listItem.png') no-repeat center center;
+  background: url("assets/listItem.png") no-repeat center center;
   background-size: contain;
   transform: translateY(-50%) scale(1.2);
-
 }
 
 #upcycleItem:hover:after {
-  background: url('assets/upcycling.png') no-repeat center center;
+  background: url("assets/upcycling.png") no-repeat center center;
   background-size: contain;
   transform: translateY(-50%) scale(1.2);
-
 }
 
 /* Optional: Change background color on hover */
@@ -451,7 +444,6 @@ body {
   transform: scale(1.3);
   z-index: 1;
 }
-
 
 @keyframes content {
   0% {
