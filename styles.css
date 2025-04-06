@@ -322,12 +322,43 @@ body {
     100% { transform: translate(-50%, -50%) scale(1); }
   }
 
+.eco-image {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 8px;
+}
 
 .eco-image img {
   width: auto;
   height: 74vh;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease-in-out;
+}
+
+/* Hover overlay effect */
+/* .eco-image:hover:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('assets/ecoswap2.jpg') no-repeat center center/contain;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+} */
+
+.eco-image:hover:after {
+  opacity: 1;
+  transition: all 0.5s ease-in-out;
+}
+
+/* Transform effects */
+.eco-image:hover img {
+  transform: rotateY(180deg);
+  filter: brightness(0.7);
 }
 
 /* main content of webpage from EcoSwap headline to button and image of recycle  */
@@ -367,6 +398,8 @@ body {
   padding: 10px 20px;
   padding-left: 50px;  /* space for the left icon */
   padding-right: 50px; /* space for the right icon */
+  margin-top: 25px;
+  font-family: var(--fontfamily);
   border: none;
   cursor: pointer;
   background-color: var(--eco);
@@ -438,7 +471,8 @@ body {
 .itemContainer {
   max-width: 1200px;
   margin: auto;
-  margin-bottom: 25px;
+  margin-top: 60px;
+  margin-bottom: 120px;
 }
 
 h1 {

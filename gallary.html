@@ -7,7 +7,7 @@
             margin: 0;
             padding: 0;
             min-height: 100vh;
-            background: linear-gradient(to right, #70874c, #f0f0f0);
+            background: linear-gradient(to right, #110a27, #110a27);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -346,13 +346,13 @@
             const imageUrls = [
                 'assets/Books.jpg',
                 'assets/Clothes.jpg',
-                'assets/Furniture.jpg',
-                'assets/Household.jpg',
-                'assets/Tools.jpg',
+                'assets/headphone.jpg',
+                'assets/gamecontroler1.jpg',
+                'assets/Home Appliances.jpg',
                 'assets/Toys.jpg',
-                'assets/Appliances.jpg',
-                'assets/Decor.jpg',
-                'assets/Outdoor.jpg',
+                'assets/Digital Appliances.jpg',
+                'assets/Craft.jpg',
+                'assets/Sports.jpg',
            
             ];
             
@@ -379,7 +379,7 @@
                 `;
                 
                 // Create swap buttons for each corner
-                const positions = ['top-left', 'top-right', 'bottom-left', 'bottom-right'];
+                const positions = [  'bottom-right'];
                 positions.forEach(pos => {
                     const swapBtn = document.createElement('button');
                     swapBtn.className = `swap-btn swap-btn-${pos}`;
