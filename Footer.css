@@ -21,7 +21,6 @@ footer{
 }
 
 /* Footer Section */
-
 .footerStart{
     display: flex;
     justify-content: space-between;
@@ -36,7 +35,6 @@ footer{
     letter-spacing: 4px;
 
 }
-
 
 img{
     margin: 0;
@@ -53,9 +51,7 @@ img{
 }
 
 
-
  /* Second footer */
-
 .footerSecond {
     display: flex;
     justify-content: space-evenly;
@@ -64,7 +60,6 @@ img{
 }
 
 /* Links Section */
-
 .footerLink {
     display: inline-block;
     color: var(--fontcolor);
@@ -92,7 +87,6 @@ img{
 }
 
 /* services section */
-
 .footerService {
     color: var(--fontcolor);
     display: inline-block;
@@ -120,7 +114,6 @@ img{
 }
 
 /* Other Services Section */
-
 .footerOtherServices {
     color: var(--fontcolor);
     display: inline-block;
@@ -148,7 +141,6 @@ img{
 }
 
 /* Contact */
-
 .footerContact {
     color: var(--fontcolor);
     margin-right: 50px;
