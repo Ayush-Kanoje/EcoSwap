@@ -543,7 +543,7 @@ p {
   background-image: url("assets/clothes.jpg");
 } /* Clothing */
 .box:nth-child(2) {
-  background-image: url("assets/Digit\ Appliances.jpg");
+  background-image: url("assets/Digital\ Appliances.jpg");
 } /* Electronics */
 .box:nth-child(3) {
   background-image: url("assets/Books.jpg");
