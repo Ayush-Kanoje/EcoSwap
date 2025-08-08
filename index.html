@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoSwap - Sustainable Marketplace</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+ 
+    <!-- Authentication Modal -->
+    <div id="authModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="loginForm" class="auth-form">
+                <h2>Welcome Back</h2>
+                <form>
+                    <input type="email" class="form-control" placeholder="Email" required>
+                    <input type="password" class="form-control" placeholder="Password" required>
+                    <button type="submit" class="btn btn--primary btn--full-width">Sign In</button>
+                </form>
+                <p>Don't have an account? <a href="#" id="showRegister">Sign up</a></p>
+            </div>
+            <div id="registerForm" class="auth-form hidden">
+                <h2>Join EcoSwap</h2>
+                <form>
+                    <input type="text" class="form-control" placeholder="Full Name" required>
+                    <input type="email" class="form-control" placeholder="Email" required>
+                    <input type="password" class="form-control" placeholder="Password" required>
+                    <input type="text" class="form-control" placeholder="Location (City, State)" required>
+                    <button type="submit" class="btn btn--primary btn--full-width">Create Account</button>
+                </form>
+                <p>Already have an account? <a href="#" id="showLogin">Sign in</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Item Modal -->
+    <div id="addItemModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>List Your Item</h2>
+            <form id="addItemForm">
+                <div class="form-group">
+                    <label class="form-label">Item Title</label>
+                    <input type="text" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Category</label>
+                    <select class="form-control" required>
+                        <option value="">Select Category</option>
+                        <option value="Clothing">Clothing</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Books">Books</option>
+                        <option value="Home & Garden">Home & Garden</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Toys">Toys</option>
+                        <option value="Art & Craft">Art & Craft</option>
+                        <option value="Music">Music</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Condition</label>
+                    <select class="form-control" required>
+                        <option value="">Select Condition</option>
+                        <option value="New">New</option>
+                        <option value="Like New">Like New</option>
+                        <option value="Good">Good</option>
+                        <option value="Fair">Fair</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Original Price ($)</label>
+                    <input type="number" class="form-control" min="0" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Swap Value ($)</label>
+                    <input type="number" class="form-control" min="0" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Description</label>
+                    <textarea class="form-control" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn--primary btn--full-width">List Item</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Item Detail Modal -->
+    <div id="itemModal" class="modal hidden">
+        <div class="modal-content modal-large">
+            <span class="close-modal">&times;</span>
+            <div id="itemDetails"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1><i class="fas fa-leaf"></i> EcoSwap</h1>
+                </div>
+                
+                <div class="search-container">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Search for items...">
+                        <button class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <nav class="nav-desktop">
+                    <a href="#" class="nav-link">Browse</a>
+                    <a href="#" class="nav-link">How it Works</a>
+                    <a href="#" class="nav-link">Community</a>
+                </nav>
+
+                <div class="header-actions">
+                    <button class="btn btn--primary" id="addItemBtn">
+                        <i class="fas fa-plus"></i> List Item
+                    </button>
+                    <button class="btn btn--secondary" id="loginBtn">
+                        <i class="fas fa-user"></i> Sign In
+                    </button>
+                    <button class="nav-toggle" id="navToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <nav class="nav-mobile hidden" id="navMobile">
+        <div class="container">
+            <a href="#" class="nav-link">Browse</a>
+            <a href="#" class="nav-link">How it Works</a>
+            <a href="#" class="nav-link">Community</a>
+            <a href="#" class="nav-link">Messages</a>
+            <a href="#" class="nav-link">Profile</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Turn Your Unused Items Into Something Amazing</h1>
+                <p>Join thousands of eco-conscious people swapping, selling, and discovering pre-loved treasures in your community.</p>
+                <div class="hero-actions">
+                    <button class="btn btn--primary btn--lg" id="heroExploreBtn">
+                        <i class="fas fa-search"></i> Explore Items
+                    </button>
+                    <button class="btn btn--outline btn--lg" id="heroListBtn">
+                        <i class="fas fa-plus"></i> List Your Items
+                    </button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">15,847</span>
+                        <span class="stat-label">Happy Users</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">23,456</span>
+                        <span class="stat-label">Items Swapped</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">12.4t</span>
+                        <span class="stat-label">CO2 Saved</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="container">
+            <h2>Browse by Category</h2>
+            <div class="categories-grid" id="categoriesGrid">
+                <!-- Categories will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Items Section -->
+    <section class="featured-items">
+        <div class="container">
+            <div class="section-header">
+                <h2>Recently Added Items</h2>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="Clothing">Clothing</button>
+                    <button class="filter-btn" data-filter="Electronics">Electronics</button>
+                    <button class="filter-btn" data-filter="Books">Books</button>
+                    <button class="filter-btn" data-filter="Sports">Sports</button>
+                </div>
+            </div>
+            <div class="items-grid" id="itemsGrid">
+                <!-- Items will be populated by JavaScript -->
+            </div>
+            <div class="load-more-container">
+                <button class="btn btn--secondary" id="loadMoreBtn">Load More Items</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2>How EcoSwap Works</h2>
+            <div class="steps-grid">
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3>1. List Your Items</h3>
+                    <p>Take photos and describe items you no longer need. It's free and takes just minutes.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>2. Discover & Connect</h3>
+                    <p>Browse items in your area, message sellers, and negotiate fair swaps or purchases.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>3. Meet & Exchange</h3>
+                    <p>Meet safely in public places, complete your swap, and help build a sustainable community.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>4. Save the Planet</h3>
+                    <p>Track your environmental impact and see how much CO2 you've saved through sustainable swapping.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sustainability Impact Section -->
+    <section class="sustainability">
+        <div class="container">
+            <div class="sustainability-content">
+                <div class="sustainability-text">
+                    <h2>Your Impact Matters</h2>
+                    <p>Every swap you make contributes to a more sustainable future. Join our community in reducing waste and carbon emissions.</p>
+                    <div class="impact-stats">
+                        <div class="impact-stat">
+                            <i class="fas fa-recycle"></i>
+                            <div>
+                                <span class="impact-number">8.7 tons</span>
+                                <span class="impact-label">Waste Reduced</span>
+                            </div>
+                        </div>
+                        <div class="impact-stat">
+                            <i class="fas fa-tree"></i>
+                            <div>
+                                <span class="impact-number">12.4 tons</span>
+                                <span class="impact-label">CO2 Saved</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sustainability-tip" id="sustainabilityTip">
+                        <!-- Tip will be populated by JavaScript -->
+                    </div>
+                </div>
+                <div class="sustainability-visual">
+                    <div class="eco-graphic">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-leaf"></i> EcoSwap</h3>
+                    <p>Building a sustainable future through community-driven exchange and reuse.</p>
+                    <div class="social-links">
+                        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Marketplace</h4>
+                    <ul>
+                        <li><a href="#">Browse Items</a></li>
+                        <li><a href="#">Categories</a></li>
+                        <li><a href="#">Trending</a></li>
+                        <li><a href="#">Local Swaps</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="#">How it Works</a></li>
+                        <li><a href="#">Safety Tips</a></li>
+                        <li><a href="#">Success Stories</a></li>
+                        <li><a href="#">Sustainability Impact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 EcoSwap. All rights reserved. Making the world more sustainable, one swap at a time.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
